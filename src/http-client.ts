@@ -16,7 +16,7 @@ export class HttpClient {
         this.setRequestHandler(requestHandler ?? new RequestHandler());
     }
 
-    use<T extends DelegatingRequestHandler, TArgs extends any[]>(ctor: DelegatingHandlerConstructor<T, TArgs>, ...args: TArgs): this {
+    pipe<T extends DelegatingRequestHandler, TArgs extends any[]>(ctor: DelegatingHandlerConstructor<T, TArgs>, ...args: TArgs): this {
         const requestHandler = new ctor(this._requestHandler, ...args);
         this.setRequestHandler(requestHandler);
         return this;
